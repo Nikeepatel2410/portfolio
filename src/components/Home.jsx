@@ -1,17 +1,22 @@
 import { Box, IconButton ,Drawer, List, ListItem, ListItemText, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import bgimage from '../images/background.jpeg'
 import zIndex from '@mui/material/styles/zIndex';
+import { Link, useLocation } from 'react-router-dom';
 const Home = () => {
     const[openDrawer,setOpenDrawer]=useState(false);
+    const location= useLocation();
     const toggleDrawer =()=>{
         setOpenDrawer(!openDrawer)
     }
-    const colseDrawer=()=>{
+    const closeDrawer=()=>{
       setOpenDrawer(false)
     }
+    useEffect(()=>{
+setOpenDrawer(false)
+    },[location])
   return (
     <Box sx={{backgroundImage:`url(${bgimage})`,height:'100vh',width:'100vw', backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -31,34 +36,34 @@ const Home = () => {
           top: 5,              // Set top padding from the top
           left: 200,             // Set left padding from the left
           zIndex: 10}}>
-        <CloseIcon sx={{ color: 'lightgray', '&:hover': { color: 'white' } }}onClick={colseDrawer} fontSize='large'/>
+        <CloseIcon sx={{ color: 'lightgray', '&:hover': { color: 'white' } }}onClick={closeDrawer} fontSize='large'/>
       </IconButton>)}
       <Drawer
-      sx={{ bgcolor:'black',opacity:0.5,zIndex:1,padding:3}}
+      sx={{ opacity:0.5,zIndex:1,padding:3,marginTop:'60px',position:'absolute'}}
         anchor="left" 
         open={openDrawer}
         onClose={toggleDrawer}
        
         
       >
-        <Box sx={{ width: 250 }} role="presentation">
+        <Box sx={{ width: 250}} role="presentation">
           <List sx={{margin:4}}>
-            <ListItem button>
+            <ListItem button component={Link} to='/home' onClick={closeDrawer}>
               <ListItemText primary="Home" />
             </ListItem>
-            <ListItem button>
+            <ListItem button component={Link} to='/education' onClick={closeDrawer}>
               <ListItemText primary="Education" />
             </ListItem>
-            <ListItem button>
+            <ListItem button component={Link} to='/projects' onClick={closeDrawer}>
               <ListItemText primary="Projects" />
             </ListItem>
-            <ListItem button>
+            <ListItem button component={Link} to='/experience' onClick={closeDrawer}>
               <ListItemText primary="Experience" />
             </ListItem>
-            <ListItem button>
+            <ListItem button component={Link} to='/skills' onClick={closeDrawer}>
               <ListItemText primary="Skills" />
             </ListItem>
-            <ListItem button>
+            <ListItem button component={Link} to='/contact' onClick={closeDrawer}>
               <ListItemText primary="Contact me" />
             </ListItem>
             
