@@ -8,10 +8,12 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import ContactMe from './components/ContactMe';
+import Layout from './components/Layout';
 
 function App() {
   return (
     <Router>
+      <Layout>
       <Routes>
      <Route path='/' element={<LandingPage/>}/> 
      <Route path='/home' element={<Home/>}/>
@@ -21,6 +23,7 @@ function App() {
      <Route path='/projects' element={<Projects/>}/>
      <Route path='/contact' element={<ContactMe/>}/>
       </Routes>
+      </Layout>
     </Router>
   
   );

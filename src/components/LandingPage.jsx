@@ -32,7 +32,7 @@ useEffect(() => {
     </Typewriter>
     </Typography> ):(<Home/>)}
      
-    </Box>
+ </Box>
   )
 }
 
