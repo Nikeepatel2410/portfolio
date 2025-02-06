@@ -1,21 +1,57 @@
-import React from 'react'
-import { Card, CardContent,Typography } from '@mui/material'
-const PinkCard = ({name,skill,github}) => {
+import React from "react";
+import { Card, CardContent, Typography, Link } from "@mui/material";
+const PinkCard = ({ name, skill, github, url }) => {
   return (
-    <Card variant="outlined" sx={{margin:2,border:'#e5e7eb',bgcolor:'rgb(245 208 254 / 50%)', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',  transition: "transform 0.3s ease-in-out",
-        "&:hover": {
-          transform: "scale(1.05)", // Zoom in effect
-          boxShadow: 6, // Increase shadow on hover
-        },textAlign:'left'}}>
-        <CardContent>
-        <Typography variant='h5'>{name}</Typography>
-  <Typography variant='h6' sx={{color:'darkgrey'}}>{skill}</Typography>
-  <Typography variant='h6' sx={{color:'darkgrey'}}>{github}</Typography>
-  
-  
-        </CardContent>
-      </Card>
-  )
-}
+    <Card
+      variant="outlined"
+      sx={{
+        margin: 2,
+        border: "#e5e7eb",
+        bgcolor: "rgb(245 208 254 / 50%)",
+        width: "50%",
+        height: "40%",
+        textAlign: "left",
+        borderRadius: 3,
+      }}
+    >
+      <CardContent>
+        <Typography
+          variant="h6"
+          sx={{ lineHeight: "2.5rem", fontWeight: "bold" }}
+        >
+          {name}
+        </Typography>
+        <Typography
+          variant="h7"
+          textOverflow="wrap"
+          sx={{ color: "black", lineHeight: "2rem" }}
+        >
+          {skill}
+        </Typography>
+        <Typography
+          variant="h6"
+          sx={{ color: "rgb(134 25 143)", lineHeight: "2rem" }}
+        >
+          {github}
+        </Typography>
 
-export default PinkCard
+        <Link
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            display: "block",
+            mt: 1,
+            lineHeight: "2rem",
+            color: "rgb(134 25 143)",
+            textDecoration: "null",
+          }}
+        >
+          Visit Website
+        </Link>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default PinkCard;
