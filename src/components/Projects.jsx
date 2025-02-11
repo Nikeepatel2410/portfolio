@@ -1,44 +1,45 @@
 import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, useMediaQuery } from "@mui/material";
 import project from "../images/project.webp";
 import PinkCard from "./PinkCard";
 
 const Projects = () => {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <Container
       maxWidth="xl"
       disableGutters
       sx={{
-        height: "100vh",
-        width: "100vw",
+        minHeight: "100vh",
         display: "flex",
-        paddingX: "0px",
+        flexDirection: isMobile ? "column" : "row",
         margin: 0,
+        paddingX: "0px",
       }}
     >
       <Box
         sx={{
           backgroundImage: `url(${project})`,
-          height: "100vh",
-          width: "30vw",
+          height: isMobile ? "30vh" : "100vh",
+          width: isMobile ? "100vw" : "30vw",
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundColor: "rgb(245 208 254)",
         }}
       ></Box>
       <Box
+        margin={isMobile ? 2 : 7}
         sx={{
           textAlign: "center",
           display: "flex",
           flex: 1,
           flexDirection: "column",
-          marginX: 10,
         }}
       >
         <Typography
-          variant="h4"
+          variant={isMobile ? "h4" : "h3"}
           sx={{
-            marginTop: "30px",
+            marginTop: isMobile ? "20px" : "30px",
             color: "rgb(134 25 143)",
             textDecoration: "underline",
             fontWeight: "bold",
@@ -51,10 +52,10 @@ const Projects = () => {
             textAlign: "center",
             display: "flex",
             flex: 1,
-            flexDirection: "row",
-            marginX: 10,
+            flexDirection: isMobile ? "column" : "row",
+            width: "100%",
             justifyContent: "space-evenly",
-            margin: 5,
+            margin: isMobile ? 2 : 5,
           }}
         >
           <PinkCard

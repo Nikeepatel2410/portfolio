@@ -8,8 +8,8 @@ const PinkCard = ({ name, skill, github, url }) => {
         margin: 2,
         border: "#e5e7eb",
         bgcolor: "rgb(245 208 254 / 50%)",
-        width: "50%",
-        height: "40%",
+        width: { xs: "90%", sm: "50%" },
+        height: "auto",
         textAlign: "left",
         borderRadius: 3,
       }}

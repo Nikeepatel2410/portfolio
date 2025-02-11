@@ -7,11 +7,13 @@ import {
   Typography,
   Snackbar,
   Alert,
+  useMediaQuery,
 } from "@mui/material"; // Import Snackbar and Alert
 
 import contact from "../images/mail.webp";
 
 const ContactMe = () => {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [nameField, setNameField] = useState("");
   const [emailField, setEmailField] = useState("");
   const [numberField, setNumberField] = useState("");
@@ -50,18 +52,17 @@ const ContactMe = () => {
       maxWidth="xl"
       disableGutters
       sx={{
-        height: "100vh",
-        width: "100vw",
+        minHeight: "100vh",
         display: "flex",
-        paddingX: "0px",
+        flexDirection: isMobile ? "column" : "row",
         margin: 0,
       }}
     >
       <Box
         sx={{
           backgroundImage: `url(${contact})`,
-          height: "100vh",
-          width: "30vw",
+          height: isMobile ? "30vh" : "100vh",
+          width: isMobile ? "100vw" : "30vw",
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundColor: "rgb(255 237 213 )",
@@ -73,13 +74,14 @@ const ContactMe = () => {
           display: "flex",
           flex: 1,
           flexDirection: "column",
-          marginX: 10,
+          marginX: isMobile ? 2 : 10,
+          marginBottom: 2,
         }}
       >
         <Typography
-          variant="h4"
+          variant={isMobile ? "h4" : "h3"}
           sx={{
-            margin: "30px",
+            margin: isMobile ? "20px" : "30px",
             color: "rgb(217 119 6)",
             textDecoration: "underline",
             fontWeight: "bold",
@@ -89,7 +91,7 @@ const ContactMe = () => {
         </Typography>
         <Box
           backgroundColor="rgb(255 237 213/0.5 )"
-          marginX={15}
+          marginX={isMobile ? 2 : 15}
           paddingBottom={5}
           borderRadius={3}
           boxShadow={5}
@@ -104,7 +106,7 @@ const ContactMe = () => {
           }}
         >
           <TextField
-            sx={{ margin: 2, width: "80%" }}
+            sx={{ margin: 2, width: isMobile ? "90%" : "80%" }}
             label="Name"
             name="name"
             value={nameField}
@@ -112,7 +114,7 @@ const ContactMe = () => {
             variant="standard"
           />
           <TextField
-            sx={{ margin: 2, width: "80%" }}
+            sx={{ margin: 2, width: isMobile ? "90%" : "80%" }}
             label="Email"
             name="email"
             value={emailField}
@@ -120,7 +122,7 @@ const ContactMe = () => {
             variant="standard"
           />
           <TextField
-            sx={{ margin: 2, width: "80%" }}
+            sx={{ margin: 2, width: isMobile ? "90%" : "80%" }}
             label="Number"
             name="number"
             value={numberField}
@@ -128,7 +130,7 @@ const ContactMe = () => {
             variant="standard"
           />
           <TextField
-            sx={{ margin: 2, width: "80%" }}
+            sx={{ margin: 2, width: isMobile ? "90%" : "80%" }}
             label="Msg"
             name="msg"
             value={msgField}
@@ -140,7 +142,7 @@ const ContactMe = () => {
               backgroundColor: "rgb(217 119 6)",
               color: "white",
               marginTop: 2,
-              width: "30%",
+              width: isMobile ? "50%" : "30%",
             }}
             onClick={handleSubmit}
           >
