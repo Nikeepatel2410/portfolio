@@ -6,11 +6,14 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 const Home = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const handleLinkedInPage = () => {
-    window.location.href = "https://www.linkedin.com/in/nikee-patel";
+    window.open(
+      "https://www.linkedin.com/in/nikee-patel-b7373b215?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      "_blank"
+    );
   };
 
   const handleGithubPage = () => {
-    window.location.href = "https://github.com/Nikeepatel2410";
+    window.open("https://github.com/Nikeepatel2410", "_blank");
   };
   return (
     <Box
