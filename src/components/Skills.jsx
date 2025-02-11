@@ -1,4 +1,10 @@
-import { Container, Box, Grid2, Typography } from "@mui/material";
+import {
+  Container,
+  Box,
+  Grid2,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import skill from "../images/skills.webp";
 import reactlogo from "../images/react.png";
@@ -13,21 +19,22 @@ import materialui from "../images/material-ui-1.svg";
 import { BorderAllRounded } from "@mui/icons-material";
 
 const Skills = () => {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   return (
     <Container
       maxWidth="xl"
       disableGutters
       sx={{
-        height: "100vh",
-        width: "100vw",
+        minHeight: "100vh",
         display: "flex",
-        marginBottom: "0px",
+        flexDirection: isMobile ? "column" : "row",
+        margin: 0,
       }}
     >
       <Box
         sx={{
-          height: "100vh",
-          width: "30vw",
+          height: isMobile ? "30vh" : "100vh",
+          width: isMobile ? "100vw" : "30vw",
           backgroundImage: `url(${skill})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
@@ -36,14 +43,14 @@ const Skills = () => {
         }}
       ></Box>
       <Box
+        margin={isMobile ? 2 : 7}
         disableGutters
         sx={{
           display: "flex",
           flex: 1,
           textAlign: "center",
           flexDirection: "column",
-          margin: 0,
-          padding: 0,
+
           width: "100%",
         }}
       >
